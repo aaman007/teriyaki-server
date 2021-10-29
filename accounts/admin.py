@@ -7,6 +7,8 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.authtoken.models import Token, TokenProxy
 from allauth.socialaccount.models import EmailAddress
 
+from accounts.models import Address
+
 User = get_user_model()
 
 
@@ -15,12 +17,17 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['id', 'username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser']
     fieldsets = [
         [None, {'fields': ['username', 'password']}],
-        [_('Personal info'), {'fields': ['first_name', 'last_name', 'email']}],
+        [_('Personal info'), {'fields': ['first_name', 'last_name', 'email', 'phone_number']}],
         [_('Permissions'), {
             'fields': ['is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'],
         }],
         [_('Important dates'), {'fields': ['last_login', 'date_joined']}],
     ]
+
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'city', 'street', 'postal_code']
 
 
 @admin.register(Token)
