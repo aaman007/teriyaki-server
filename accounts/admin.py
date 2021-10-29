@@ -3,7 +3,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Permission
 from django.utils.translation import gettext_lazy as _
+
 from rest_framework.authtoken.models import Token, TokenProxy
+from allauth.socialaccount.models import EmailAddress
 
 User = get_user_model()
 
@@ -32,4 +34,5 @@ class TokenAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Permission)
+admin.site.unregister(EmailAddress)
 admin.site.unregister(TokenProxy)

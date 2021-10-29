@@ -26,9 +26,15 @@ urlpatterns = [
     # APIs
     path('api/accounts/', include('accounts.api.urls')),
     path('api/core/', include('core.api.urls')),
+    path('api/product/', include('product.api.urls')),
+    path('api/order/', include('order.api.urls')),
+    path('api/vendor/', include('vendor.api.urls')),
+    path('api/wishlist/', include('wishlist.api.urls')),
 
-    # Rest Framework
-    path('api-auth/', include('rest_framework.urls'))
+    # External App URLs
+    path('api-auth/', include('rest_framework.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
 ]
 
 if settings.DEBUG:

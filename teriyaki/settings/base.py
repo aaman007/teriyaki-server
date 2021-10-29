@@ -39,17 +39,28 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites'
 ]
 
 THIRD_PARTY_APPS = [
     'debug_toolbar',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
 ]
 
 LOCAL_APPS = [
     'accounts',
-    'core'
+    'core',
+    'order',
+    'product',
+    'vendor',
+    'wishlist'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -71,8 +82,7 @@ ROOT_URLCONF = 'teriyaki.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# DRF Config
 # DRF configs
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -127,6 +136,12 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
 
+}
+
+# allauth configs
+SITE_ID = 1
+
+REST_AUTH_SERIALIZERS = {
 }
 
 # Logging Configs
