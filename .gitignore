@@ -218,4 +218,8 @@ cython_debug/
 
 # Cython debug symbols
 
+# Project Files
+.env
+logs
+
 # End of https://www.toptal.com/developers/gitignore/api/python,django
